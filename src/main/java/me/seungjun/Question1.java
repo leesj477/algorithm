@@ -1,2 +1,4 @@
-package me.seungjun;public class Question1 {
+package me.seungjun;
+
+public class Question1 {
 }
