@@ -34,7 +34,6 @@ public class LinkedListSolution {
             tail = tail.next;
         }
     }
-
     private void reverse1() {
         LinkedNode current = this.head;
         LinkedNode prev = null;

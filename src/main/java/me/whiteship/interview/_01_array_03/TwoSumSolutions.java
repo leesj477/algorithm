@@ -8,14 +8,14 @@ public class TwoSumSolutions {
 
     public static void main(String[] args) {
         TwoSumSolutions twoSumSolutions = new TwoSumSolutions();
-        System.out.println(Arrays.toString(twoSumSolutions.solution2(new int[]{2, 3, 4, 7}, 6)));
+        System.out.println(Arrays.toString(twoSumSolutions.solution3(new int[]{2, 3, 5, 7}, 10)));
     }
 
     private int[] solution1(int[] numbers, int target) {
         for (int i = 0; i < numbers.length; i++) {
             for (int j = i + 1; j < numbers.length; j++) {
                 if (numbers[i] + numbers[j] == target) {
-                    return new int[] {i, j};
+                    return new int[]{i, j};
                 }
             }
         }
@@ -29,7 +29,7 @@ public class TwoSumSolutions {
         for (int i = 0; i < numbers.length; i++) {
             int numberToFind = target - numbers[i];
             if (numberMap.containsKey(numberToFind) && numberMap.get(numberToFind) != i) {
-                return new int[] {i, numberMap.get(numberToFind)};
+                return new int[]{i, numberMap.get(numberToFind)};
             }
 
             numberMap.put(numbers[i], i);
@@ -45,26 +45,25 @@ public class TwoSumSolutions {
 //
 //        예) numbers = [2, 3, 5, 7] target = 10, 10을 만들 수 있는 2, 3, 5의 인덱스인 0, 1, 2를 배열로 리턴해야 한다.
 //
+        // generate Hash Map
         Map<Integer, Integer> numberMap = new HashMap<>();
-        Map<Integer, Integer> numberMap2 = new HashMap<>();
 
         for (int i = 0; i < numbers.length; i++) {
             numberMap.put(numbers[i], i);
-            numberMap2.put(numbers[i], i);
         }
-
 
         for (int i = 0; i < numbers.length; i++) {
-            int numberToFind1 = target - numbers[i]; // 10 - 2  = 8
-            numberMap.containsValue(target - numbers[i] - numberToFind1); // 10 - 2 - 8
+            for (int j = i + 1; j < numbers.length; j++) {
+                int numberToFind = target - numbers[i] - numbers[j];
 
-            if (numberMap.containsKey(numberToFind1) && numberMap.get(numberToFind1) != i  ){
-                return new int[] {i, numberMap.get(numberToFind1)};
+                if (numberMap.containsKey(numberToFind)) {
+                    return new int[]{i, j, numberMap.get(numberToFind)};
+                }
             }
-
         }
-
-        return null;
+        return null; // 요구 사항에 따라 다름
     }
 
 }
+
+
