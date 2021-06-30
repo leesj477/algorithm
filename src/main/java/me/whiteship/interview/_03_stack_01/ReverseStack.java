@@ -12,12 +12,41 @@ public class ReverseStack {
 
         System.out.println(numbers);
         ReverseStack reverseStack = new ReverseStack();
-        reverseStack.solution(numbers);
+//        numbers = reverseStack.solution(numbers);
+        reverseStack.solution2(numbers);
+
         System.out.println(numbers);
     }
 
     // TODO 스택을 뒤집는 코드를 작성하라.
-    private void solution(Stack<Integer> stack) {
+    private Stack<Integer> solution(Stack<Integer> stack) {
+        Stack<Integer> reversed = new Stack<>();
+        while(!stack.isEmpty()){
+            reversed.push(stack.pop());
+        }
+        return reversed;
     }
+
+
+    // TODO 재귀적인 방법으로 호출
+    private void  solution2(Stack<Integer> stack) {
+        if(stack.isEmpty()) return;
+
+        int temp  = stack.pop();
+        solution2(stack);
+        insertAtBottom(stack,temp);
+
+    }
+
+    private void insertAtBottom(Stack<Integer> stack , int number){
+        if(stack.isEmpty()){
+            stack  .push(number);
+        } else {
+            int temp = stack.pop();
+            insertAtBottom(stack,number);
+            stack.push(temp);
+        }
+    }
+
 
 }

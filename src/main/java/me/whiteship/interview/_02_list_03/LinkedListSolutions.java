@@ -11,6 +11,7 @@ public class LinkedListSolutions {
         list.add(new LinkedNode(2));
         list.add(new LinkedNode(3));
         list.add(new LinkedNode(4));
+        list.add(new LinkedNode(4));
         list.add(new LinkedNode(5));
 
         list.print();
